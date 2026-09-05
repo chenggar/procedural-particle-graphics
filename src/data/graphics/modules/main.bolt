@@ -1,0 +1,211 @@
+import math
+import random
+
+SPAWN_HEIGHT = 10
+
+function effects:load:
+    scoreboard objectives add timer dummy
+
+function effects:circle1:
+    for i in range(100):
+        theta = 2 * math.pi * i / 100
+        
+        radius = 5
+        x = radius * math.sin(theta)
+        y = 10
+        z = radius * math.cos(theta)
+        
+        particle flame ~x ~y ~z
+
+function effects:circle2:
+    for i in range(100):
+        theta = 2 * math.pi * i / 100
+        
+        radius = 5
+        x = radius * math.sin(theta)
+        y = 10
+        z = radius * math.cos(theta)
+        
+        particle totem_of_undying ~x ~y ~z
+
+function effects:sphere1:
+    for i in range(100):
+        theta = math.pi * i / 100
+        
+        for j in range(100):
+            phi = 2 * math.pi * j / 100
+
+            radius = 3
+            x = radius * math.sin(theta) * math.cos(phi)
+            y = (radius * math.sin(theta) * math.sin(phi)) + SPAWN_HEIGHT
+            z = radius * math.cos(theta)
+
+            particle cherry_leaves ~x ~y ~z
+
+function effects:sphere2:
+    for i in range(100):
+        theta = math.pi * i / 100
+        
+        for j in range(100):
+            phi = 2 * math.pi * j / 100
+            r = 0.1 * i
+            g = 0.1 * i
+            b = 0.1 * i
+
+            radius = 3
+            x = radius * math.sin(theta) * math.cos(phi)
+            y = (radius * math.sin(theta) * math.sin(phi)) + SPAWN_HEIGHT
+            z = radius * math.cos(theta)
+
+            particle instant_effect{color:[r, g, b]} ~x ~y ~z
+
+function effects:sphere3:
+    for i in range(100):
+        theta = math.pi * i / 100
+        
+        for j in range(100):
+            phi = 2 * math.pi * j / 100
+            r = random.randrange(1, 257) / 256
+            g = random.randrange(1, 257) / 256
+            b = random.randrange(1, 257) / 256
+
+            radius = 3
+            x = radius * math.sin(theta) * math.cos(phi)
+            y = (radius * math.sin(theta) * math.sin(phi)) + SPAWN_HEIGHT
+            z = radius * math.cos(theta)
+
+            particle instant_effect{color:[r, g, b]} ~x ~y ~z
+
+function effects:sphere4:
+    scoreboard players add @s timer 1  
+    for frame in range(1, 11):
+        execute if score @s timer matches frame:
+            for i in range(100):
+                theta = math.pi * i / 100
+                for j in range(100):
+                    phi = 2 * math.pi * j / 100
+                    r = frame / 10
+                    g = frame / 10
+                    b = frame / 10
+
+                    radius = 3
+                    x = radius * math.sin(theta) * math.cos(phi)
+                    y = (radius * math.sin(theta) * math.sin(phi)) + SPAWN_HEIGHT
+                    z = radius * math.cos(theta)
+
+                    particle instant_effect{color:[r, g, b]} ~x ~y ~z
+
+    execute if score @s timer matches 10 run scoreboard players set @s timer 0
+
+function effects:sphere5:
+    scoreboard players add @s timer 1  
+    for frame in range(1, 11):
+        execute if score @s timer matches frame:
+            for i in range(100):
+                theta = math.pi * i / 100
+                for j in range(100):
+                    phi = 2 * math.pi * j / 100
+                    r = frame / 10
+                    g = frame / 2
+                    b = frame / 5
+
+                    radius = 3
+                    x = radius * math.sin(theta) * math.cos(phi)
+                    y = (radius * math.sin(theta) * math.sin(phi)) + SPAWN_HEIGHT
+                    z = radius * math.cos(theta)
+
+                    particle instant_effect{color:[r, g, b]} ~x ~y ~z
+
+    execute if score @s timer matches 10 run scoreboard players set @s timer 0
+
+function effects:sphere6:
+    scoreboard players add @s timer 1  
+    for frame in range(1, 11):
+        execute if score @s timer matches frame:
+            for i in range(100):
+                theta = math.pi * i / 100
+                for j in range(100):
+                    phi = 2 * math.pi * j / 100
+                    radius = frame / 2
+                    x = radius * math.sin(theta) * math.cos(phi)
+                    y = (radius * math.sin(theta) * math.sin(phi)) + SPAWN_HEIGHT
+                    z = radius * math.cos(theta)
+
+                    particle instant_effect ~x ~y ~z
+
+    execute if score @s timer matches 10 run scoreboard players set @s timer 0
+
+function effects:sphere7:
+    scoreboard players add @s timer 1  
+    for frame in range(1, 11):
+        execute if score @s timer matches frame:
+            for i in range(100):
+                theta = math.pi * i / 100
+                for j in range(100):
+                    phi = 2 * math.pi * j / 100
+                    r = frame / 10
+                    g = frame / 2
+                    b = frame / 5
+
+                    radius = frame / 2
+                    x = radius * math.sin(theta) * math.cos(phi)
+                    y = (radius * math.sin(theta) * math.sin(phi)) + SPAWN_HEIGHT
+                    z = radius * math.cos(theta)
+
+                    particle instant_effect{color:[r, g, b]} ~x ~y ~z
+
+    execute if score @s timer matches 10 run scoreboard players set @s timer 0
+
+function effects:torus1:
+    for i in range(100):
+        theta = math.pi * i / 100
+        
+        for j in range(100):
+            phi = 2 * math.pi * j / 100
+
+            radius1 = 3
+            radius2 = 3
+            x = (radius1 + radius2 * math.sin(theta)) * math.cos(phi)
+            y = ((radius1 + radius2 * math.sin(theta)) * math.sin(phi)) + SPAWN_HEIGHT
+            z = radius1 * math.cos(theta)
+
+            particle nautilus ~x ~y ~z
+
+function effects:torus2:
+    for i in range(100):
+        theta = math.pi * i / 100
+        
+        for j in range(100):
+            phi = 2 * math.pi * j / 100
+
+            radius1 = 3
+            radius2 = 3
+            x = (radius1 + radius2 * math.sin(theta)) * math.cos(phi)
+            y = ((radius1 + radius2 * math.sin(theta)) * math.sin(phi)) + SPAWN_HEIGHT
+            z = radius1 * math.cos(theta)
+
+            particle totem_of_undying ~x ~y ~z
+
+function effects:star:
+    for i in range(100):
+        theta = 2 * math.pi * i / 100
+
+        radius = 3
+        x = radius * math.cos(theta)**3
+        y = (radius * math.sin(theta)**3) + SPAWN_HEIGHT
+
+        particle flame ~x ~y ~
+
+function effects:cylinder:
+    for i in range(100):
+        theta = 2 * math.pi * i / 100
+
+        for j in range(20):
+            height = 0.5 * j
+            
+            radius = 3
+            x = radius * math.cos(theta)
+            y = height + SPAWN_HEIGHT
+            z = radius * math.sin(theta)
+
+            particle shriek{delay:0} ~x ~y ~z

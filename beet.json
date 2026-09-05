@@ -1,0 +1,20 @@
+{
+    "name": "procedural-particle-graphics",
+    "description": "Minecraft graphics project.",
+    "require": [
+        "bolt"
+    ],
+    "data_pack": {
+        "load": ["src"]
+    },
+    "resource_pack": {
+        "load": ["src"]
+    },
+    "pipeline": [ "mecha" ],
+    "output": "build",
+    "meta": {
+        "bolt" : {
+            "entrypoint": ["graphics:main"]
+        }
+    }
+}
