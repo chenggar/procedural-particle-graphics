@@ -83,20 +83,68 @@ After building, open Minecraft and run:
 ```
 
 ## Running Effects In Minecraft
-
-To run an effect from chat, include the slash:
-
+ 
+To run an effect from chat, include the slash. To run an effect inside a command block, leave off the slash.
+ 
+### Non-Animated Effects
+ 
+Run the effect directly:
+ 
 ```
-/function effects:sphere
+/function effects:circle
+```
+ 
+or in a command block:
+ 
+```
+function effects:circle
+```
+ 
+Available non-animated effects:
+ 
+```
+function effects:circle
+function effects:falling_circle
+function effects:star
+function effects:cylinder
+function effects:torus
+function effects:disco_sphere
+function effects:striped_sphere
+function effects:colorful_sphere
+```
+ 
+### Animated Effects
+ 
+Run `effects:load` once first (or after every `/reload`) to set up the scoreboard objectives / scheduling the animated effects rely on:
+ 
+```
+/function effects:load
+```
+ 
+Then run the animated effect, positioned at the player's location:
+ 
+```
+/execute as @p positioned ~ ~ ~ run function effects:colorful_pulsating_sphere
+```
+ 
+or in a command block:
+ 
+```
+execute as @p positioned ~ ~ ~ run function effects:colorful_pulsating_sphere
+```
+ 
+**Note:** Skipping `effects:load` before running an animated effect may cause it to not tick correctly.
+ 
+Available animated effects:
+ 
+```
+function effects:flashing_sphere
+function effects:colorful_flashing_sphere
+function effects:pulsating_sphere
+function effects:colorful_pulsating_sphere
 ```
 
-To run an effect inside a command block, leave off the slash:
-
-```
-function effects:sphere
-```
-
-### Available Effects
+## All Available Effects
 
 ```
 function effects:circle
